@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bakery, Manali — Bakery and Cake Shop in Manali</title>
+    <meta name="description" content="The Bakery, Manali: Trusted Bakery and Cake Shop in Manali. Rated 4.1★ by 274+ customers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        :root{
+            --ink:#0b0c10;
+            --ink-2:#2d2f3a;
+            --ink-3:#5a5d6e;
+            --ink-4:#9396a5;
+            --cream:#faf9f6;
+            --cream-2:#f3f1ec;
+            --cream-3:#e8e4db;
+            --gold:#c9973a;
+            --gold-light:#e8b86d;
+            --gold-pale:#fdf3e3;
+            --emerald:#1a6b4a;
+            --emerald-light:#22c172;
+            --white:#ffffff;
+            --border:rgba(0,0,0,0.09);
+            --border-strong:rgba(0,0,0,0.16);
+            --r:14px;
+            --r-sm:8px;
+            --r-lg:20px;
+            --sh:0 1px 3px rgba(0,0,0,0.05),0 4px 16px rgba(0,0,0,0.06);
+            --sh-lg:0 8px 32px rgba(0,0,0,0.1),0 2px 8px rgba(0,0,0,0.05);
+            --sh-xl:0 20px 60px rgba(0,0,0,0.14);
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+        h1,h2,h3{line-height:1.12;letter-spacing:-0.02em}
+        a{color:inherit;text-decoration:none}
+        img{max-width:100%;display:block}
+
+        /* ─ NAVBAR ─ */
+        .nav{
+            position:sticky;top:0;z-index:999;
+            background:rgba(250,249,246,0.88);
+            backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+            border-bottom:1px solid var(--border);
+            height:66px;display:flex;align-items:center;
+            padding:0 32px;gap:20px;
+        }
+        .nav-brand{
+            font-family:'Playfair Display',serif;
+            font-weight:800;font-size:17px;
+            color:var(--ink);
+            flex-shrink:0;
+            white-space:normal;
+            max-width:260px;
+            line-height:1.2;
+        }
+        .nav-links{display:flex;gap:2px;list-style:none;margin-left:auto}
+        .nav-links a{
+            padding:8px 16px;border-radius:8px;
+            font-size:14px;font-weight:500;color:var(--ink-3);
+            transition:all 0.16s;
+        }
+        .nav-links a:hover,.nav-links a.active{
+            background:var(--cream-2);color:var(--ink);
+        }
+        .nav-end{display:flex;align-items:center;gap:8px;flex-shrink:0}
+        .nav-call{
+            display:none;
+            align-items:center;gap:6px;
+            padding:8px 18px;border-radius:9px;
+            background:var(--ink);color:var(--white);
+            font-size:13px;font-weight:600;
+            transition:all 0.16s;
+        }
+        .nav-call:hover{background:var(--ink-2);transform:translateY(-1px)}
+        .nav-call.visible{display:inline-flex}
+        .ham{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-direction:column;gap:5px}
+        .ham span{width:22px;height:1.5px;background:var(--ink);border-radius:2px;transition:all 0.2s;display:block}
+
+        /* ─ BUTTONS ─ */
+        .btn{
+            display:inline-flex;align-items:center;gap:7px;
+            padding:12px 24px;border-radius:10px;
+            font-family:'Plus Jakarta Sans',sans-serif;
+            font-weight:600;font-size:14px;cursor:pointer;
+            transition:all 0.18s;border:none;
+        }
+        .btn-lg{padding:15px 30px;font-size:15px;border-radius:12px}
+        .btn-ink{background:var(--ink);color:var(--white)}
+        .btn-ink:hover{background:var(--ink-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(11,12,16,0.25)}
+        .btn-gold{background:var(--gold);color:var(--white)}
+        .btn-gold:hover{background:#b8872e;transform:translateY(-1px);box-shadow:0 6px 20px rgba(201,151,58,0.3)}
+        .btn-wa{background:#25d366;color:var(--white)}
+        .btn-wa:hover{background:#1db954;transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,211,102,0.3)}
+        .btn-ghost{background:transparent;border:1.5px solid var(--border-strong);color:var(--ink)}
+        .btn-ghost:hover{background:var(--cream-2);border-color:var(--ink-3)}
+
+        /* ─ HERO ─ */
+        .hero{
+            position:relative;height:420px;
+            display:flex;align-items:center;
+            overflow:hidden;
+            background:var(--ink);
+        }
+        .hero-bg-img{
+            position:absolute;inset:0;
+            width:100%;height:100%;object-fit:cover;
+            opacity:0.22;
+            transition:opacity 0.5s;
+        }
+        .hero-gradient{
+            position:absolute;inset:0;
+            background:linear-gradient(115deg,rgba(11,12,16,0.97) 0%,rgba(11,12,16,0.82) 45%,rgba(11,12,16,0.4) 75%,rgba(11,12,16,0.2) 100%);
+        }
+        .hero-inner{
+            position:relative;z-index:2;
+            max-width:1160px;margin:0 auto;
+            padding:60px 48px 52px;
+            width:100%;
+        }
+        .hero-pill{
+            display:inline-flex;align-items:center;gap:8px;
+            border:1px solid rgba(201,151,58,0.5);
+            background:rgba(201,151,58,0.1);
+            color:var(--gold-light);
+            font-size:11px;font-weight:700;
+            letter-spacing:0.1em;text-transform:uppercase;
+            padding:7px 18px;border-radius:100px;
+            margin-bottom:28px;
+        }
+        .hero-pill-dot{width:6px;height:6px;border-radius:50%;background:var(--gold-light)}
+        .hero-name{
+            font-family:'Playfair Display',serif;
+            font-size:clamp(2rem,4.5vw,3.4rem);
+            font-weight:900;color:var(--white);
+            margin-bottom:16px;
+            line-height:1.08;
+        }
+        .hero-tagline{
+            font-size:clamp(1rem,2vw,1.2rem);
+            color:rgba(255,255,255,0.62);
+            font-weight:300;
+            margin-bottom:14px;
+            max-width:540px;
+        }
+        .hero-meta{
+            display:flex;align-items:center;gap:16px;
+            margin-bottom:40px;
+        }
+        .hero-stars{color:var(--gold-light);font-size:15px;letter-spacing:1px}
+        .hero-meta-text{color:rgba(255,255,255,0.55);font-size:14px}
+        .hero-divider{width:1px;height:14px;background:rgba(255,255,255,0.2)}
+        .hero-btns{display:flex;flex-wrap:wrap;gap:12px}
+
+        /* ─ TRUST STRIP ─ */
+        .trust-strip{
+            background:var(--white);
+            border-bottom:1px solid var(--border);
+        }
+        .trust-strip-inner{
+            max-width:1160px;margin:0 auto;
+            display:grid;grid-template-columns:repeat(4,1fr);
+        }
+        .trust-item{
+            padding:28px 24px;text-align:center;
+            border-right:1px solid var(--border);
+            position:relative;
+        }
+        .trust-item:last-child{border-right:none}
+        .trust-val{
+            font-family:'Playfair Display',serif;
+            font-size:32px;font-weight:800;
+            color:var(--ink);
+            display:flex;align-items:baseline;justify-content:center;gap:4px;
+        }
+        .trust-val sup{font-size:16px;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;color:var(--gold)}
+        .trust-lbl{font-size:11px;color:var(--ink-4);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-top:4px}
+
+        /* ─ LAYOUT ─ */
+        .wrap{max-width:1160px;margin:0 auto;padding:0 48px}
+        .section{padding:80px 0}
+        .section+.section{border-top:1px solid var(--border)}
+        .eyebrow{
+            display:inline-flex;align-items:center;gap:8px;
+            font-size:11px;font-weight:700;letter-spacing:0.1em;
+            text-transform:uppercase;color:var(--gold);
+            margin-bottom:14px;
+        }
+        .eyebrow::before{content:'';width:20px;height:1.5px;background:var(--gold)}
+        .sec-title{
+            font-family:'Playfair Display',serif;
+            font-size:clamp(1.9rem,3.5vw,2.7rem);
+            font-weight:800;color:var(--ink);
+            margin-bottom:14px;
+        }
+        .sec-sub{
+            font-size:16px;color:var(--ink-3);
+            max-width:540px;line-height:1.75;
+            margin-bottom:48px;
+            font-weight:300;
+        }
+
+        /* ─ ABOUT SECTION ─ */
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+        .about-visual{position:relative}
+        .about-img-wrap{
+            border-radius:var(--r-lg);overflow:hidden;
+            height:460px;position:relative;
+            box-shadow:var(--sh-xl);
+        }
+        .about-img-wrap img{width:100%;height:100%;object-fit:cover}
+        .about-img-wrap-bg{
+            background:linear-gradient(135deg,var(--cream-3) 0%,var(--cream-2) 100%);
+            display:flex;align-items:center;justify-content:center;
+        }
+        .about-float-card{
+            position:absolute;bottom:-20px;left:-20px;
+            background:var(--white);
+            border:1px solid var(--border);
+            border-radius:var(--r);
+            padding:20px 24px;
+            box-shadow:var(--sh-xl);
+            min-width:180px;
+        }
+        .about-float-num{
+            font-family:'Playfair Display',serif;
+            font-size:30px;font-weight:900;color:var(--ink);
+        }
+        .about-float-lbl{font-size:12px;color:var(--ink-4);margin-top:2px;font-weight:500}
+        .about-float-card-2{
+            position:absolute;top:-16px;right:-16px;
+            background:var(--gold);
+            border-radius:var(--r);
+            padding:16px 20px;
+            box-shadow:0 8px 28px rgba(201,151,58,0.35);
+        }
+        .about-float-card-2 .val{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:var(--white)}
+        .about-float-card-2 .lbl{font-size:11px;color:rgba(255,255,255,0.75);margin-top:2px;font-weight:500}
+        .trust-list{list-style:none;display:flex;flex-direction:column;gap:18px;margin-bottom:36px}
+        .trust-row{display:flex;align-items:flex-start;gap:14px}
+        .trust-dot{
+            width:28px;height:28px;border-radius:50%;flex-shrink:0;margin-top:1px;
+            background:rgba(26,107,74,0.1);
+            display:flex;align-items:center;justify-content:center;
+            font-size:13px;color:var(--emerald-light);
+        }
+        .trust-txt strong{display:block;font-weight:700;font-size:15px;color:var(--ink);margin-bottom:2px}
+        .trust-txt span{font-size:14px;color:var(--ink-3);font-weight:300}
+
+        /* ─ SERVICES ─ */
+        .svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+        .svc-card{
+            background:var(--white);
+            border:1px solid var(--border);
+            border-radius:var(--r);
+            padding:28px;
+            transition:all 0.22s;
+            position:relative;
+            overflow:hidden;
+            cursor:default;
+        }
+        .svc-card::after{
+            content:'';position:absolute;inset:0;
+            border-radius:var(--r);
+            box-shadow:inset 0 0 0 1.5px var(--gold);
+            opacity:0;transition:opacity 0.22s;
+        }
+        .svc-card:hover{transform:translateY(-4px);box-shadow:var(--sh-lg)}
+        .svc-card:hover::after{opacity:1}
+        .svc-ico{
+            width:48px;height:48px;border-radius:12px;
+            background:var(--gold-pale);
+            display:flex;align-items:center;justify-content:center;
+            font-size:22px;margin-bottom:18px;
+        }
+        .svc-name{
+            font-weight:700;font-size:15px;color:var(--ink);
+            margin-bottom:8px;
+        }
+        .svc-desc{font-size:13px;color:var(--ink-3);line-height:1.6}
+        .svc-link{
+            display:inline-flex;align-items:center;gap:4px;
+            font-size:13px;font-weight:600;color:var(--gold);
+            margin-top:14px;transition:gap 0.16s;
+        }
+        .svc-card:hover .svc-link{gap:8px}
+
+        /* ─ GALLERY ─ */
+        .gallery-grid{
+            display:grid;gap:12px;border-radius:var(--r-lg);overflow:hidden;
+        }
+        .gallery-grid.n1{grid-template-columns:1fr;height:480px}
+        .gallery-grid.n2{grid-template-columns:1fr 1fr;height:380px}
+        .gallery-grid.n3{grid-template-columns:2fr 1fr;grid-template-rows:240px 200px;height:452px}
+        .gallery-grid.n4{grid-template-columns:2fr 1fr;grid-template-rows:260px 200px;height:472px}
+        .gcell{overflow:hidden;position:relative}
+        .gcell-main{grid-row:1/3}
+        .gcell img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)}
+        .gcell:hover img{transform:scale(1.05)}
+        .gcell-overlay{
+            position:absolute;inset:0;
+            background:linear-gradient(180deg,transparent 50%,rgba(11,12,16,0.5) 100%);
+            opacity:0;transition:opacity 0.3s;
+        }
+        .gcell:hover .gcell-overlay{opacity:1}
+
+        /* ─ REVIEWS ─ */
+        .rating-hero{
+            background:var(--ink);border-radius:var(--r-lg);
+            padding:40px 48px;display:flex;align-items:center;gap:64px;
+            margin-bottom:40px;position:relative;overflow:hidden;
+        }
+        .rating-hero::before{
+            content:'';position:absolute;right:-60px;top:-60px;
+            width:240px;height:240px;border-radius:50%;
+            background:radial-gradient(circle,rgba(201,151,58,0.12) 0%,transparent 70%);
+        }
+        .rating-big{
+            font-family:'Playfair Display',serif;
+            font-size:72px;font-weight:900;color:var(--white);
+            line-height:1;flex-shrink:0;position:relative;z-index:1;
+        }
+        .rating-stars-lg{color:var(--gold-light);font-size:22px;letter-spacing:3px;margin:8px 0}
+        .rating-count{color:rgba(255,255,255,0.5);font-size:13px;position:relative;z-index:1}
+        .rating-bars{flex:1;display:flex;flex-direction:column;gap:10px;position:relative;z-index:1}
+        .rbar-row{display:flex;align-items:center;gap:12px}
+        .rbar-lbl{font-size:13px;color:rgba(255,255,255,0.55);width:40px;flex-shrink:0;font-weight:500}
+        .rbar-track{flex:1;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden}
+        .rbar-fill{height:100%;background:var(--gold);border-radius:3px}
+        .rbar-pct{font-size:12px;color:rgba(255,255,255,0.4);width:32px;text-align:right;font-weight:500}
+        .reviews-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+        .review-card{
+            background:var(--white);border:1px solid var(--border);
+            border-radius:var(--r);padding:28px;
+            transition:box-shadow 0.2s;
+        }
+        .review-card:hover{box-shadow:var(--sh-lg)}
+        .rev-stars{color:var(--gold);font-size:14px;letter-spacing:2px;margin-bottom:14px}
+        .rev-text{
+            font-size:15px;color:var(--ink-2);line-height:1.75;
+            font-style:italic;font-weight:300;margin-bottom:20px;
+        }
+        .rev-person{display:flex;align-items:center;gap:12px}
+        .rev-avatar{
+            width:40px;height:40px;border-radius:50%;
+            background:var(--gold-pale);border:1.5px solid var(--gold-light);
+            display:flex;align-items:center;justify-content:center;
+            font-weight:700;font-size:13px;color:var(--gold);
+            flex-shrink:0;
+        }
+        .rev-name{font-weight:700;font-size:14px;color:var(--ink)}
+        .rev-loc{font-size:12px;color:var(--ink-4)}
+
+        /* ─ OFFER ─ */
+        .offer-wrap{
+            background:var(--ink);border-radius:var(--r-lg);
+            padding:44px 52px;
+            display:flex;align-items:center;justify-content:space-between;
+            gap:32px;position:relative;overflow:hidden;
+        }
+        .offer-wrap::before{
+            content:'';position:absolute;top:-80px;right:-80px;
+            width:280px;height:280px;border-radius:50%;
+            background:radial-gradient(circle,rgba(201,151,58,0.1) 0%,transparent 65%);
+        }
+        .offer-wrap::after{
+            content:'';position:absolute;bottom:-100px;left:30%;
+            width:320px;height:320px;border-radius:50%;
+            background:radial-gradient(circle,rgba(201,151,58,0.05) 0%,transparent 65%);
+        }
+        .offer-left{position:relative;z-index:1}
+        .offer-pill{
+            display:inline-flex;align-items:center;gap:6px;
+            background:rgba(201,151,58,0.15);border:1px solid rgba(201,151,58,0.35);
+            color:var(--gold-light);font-size:10px;font-weight:800;
+            letter-spacing:0.1em;text-transform:uppercase;
+            padding:5px 14px;border-radius:100px;margin-bottom:16px;
+        }
+        .offer-title{
+            font-family:'Playfair Display',serif;
+            font-size:24px;font-weight:800;color:var(--white);margin-bottom:14px;
+        }
+        .offer-prices{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+        .offer-new-price{
+            font-family:'Playfair Display',serif;
+            font-size:42px;font-weight:900;color:var(--gold-light);line-height:1;
+        }
+        .offer-old-price{font-size:18px;color:rgba(255,255,255,0.3);text-decoration:line-through}
+        .offer-badge{
+            background:rgba(201,151,58,0.18);border:1px solid rgba(201,151,58,0.35);
+            color:var(--gold-light);padding:4px 12px;border-radius:6px;
+            font-size:13px;font-weight:700;
+        }
+        .offer-right{position:relative;z-index:1;flex-shrink:0}
+
+        /* ─ CONTACT ─ */
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+        .contact-cards{display:flex;flex-direction:column;gap:14px}
+        .contact-card{
+            background:var(--white);border:1px solid var(--border);
+            border-radius:var(--r);padding:22px 24px;
+            display:flex;align-items:flex-start;gap:16px;
+            transition:box-shadow 0.18s;
+        }
+        .contact-card:hover{box-shadow:var(--sh)}
+        .contact-ico{
+            width:44px;height:44px;border-radius:10px;
+            background:var(--cream-2);
+            display:flex;align-items:center;justify-content:center;
+            font-size:20px;flex-shrink:0;
+        }
+        .contact-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--ink-4);margin-bottom:4px}
+        .contact-val{font-size:15px;color:var(--ink);font-weight:600;line-height:1.4}
+        .contact-sub{font-size:12px;color:var(--ink-4);margin-top:3px;font-weight:300}
+        .contact-btns{display:flex;gap:8px;margin-top:12px}
+        .map-box{
+            border-radius:var(--r-lg);overflow:hidden;
+            border:1px solid var(--border);
+            height:420px;box-shadow:var(--sh);
+        }
+        .map-box iframe{width:100%;height:100%;border:none;display:block}
+
+        /* ─ CTA FINAL ─ */
+        .cta-final{
+            background:var(--ink);
+            padding:96px 48px;text-align:center;
+            position:relative;overflow:hidden;
+        }
+        .cta-final::before{
+            content:'';position:absolute;top:50%;left:50%;
+            transform:translate(-50%,-50%);
+            width:700px;height:700px;border-radius:50%;
+            background:radial-gradient(circle,rgba(201,151,58,0.08) 0%,transparent 65%);
+        }
+        .cta-title{
+            font-family:'Playfair Display',serif;
+            font-size:clamp(2rem,4.5vw,3.4rem);
+            font-weight:900;color:var(--white);
+            margin-bottom:14px;position:relative;
+        }
+        .cta-sub{color:rgba(255,255,255,0.48);font-size:17px;font-weight:300;margin-bottom:44px;position:relative}
+        .cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;position:relative}
+
+        /* ─ FOOTER ─ */
+        .footer{background:#06070c;padding:48px;text-align:center}
+        .footer-brand{
+            font-family:'Playfair Display',serif;
+            font-size:20px;font-weight:800;color:var(--white);margin-bottom:6px;
+        }
+        .footer-addr{font-size:13px;color:rgba(255,255,255,0.35);margin-bottom:28px;font-weight:300}
+        .footer-nav{display:flex;justify-content:center;gap:4px;flex-wrap:wrap;margin-bottom:28px}
+        .footer-nav a{
+            padding:6px 14px;border-radius:6px;font-size:13px;
+            color:rgba(255,255,255,0.35);transition:all 0.16s;
+        }
+        .footer-nav a:hover{color:var(--gold-light);background:rgba(255,255,255,0.05)}
+        .footer-copy{font-size:11px;color:rgba(255,255,255,0.2)}
+
+        /* ─ FLOAT ─ */
+        .float-wrap{position:fixed;bottom:24px;right:24px;display:flex;flex-direction:column;gap:10px;z-index:500}
+        .float-btn{
+            width:54px;height:54px;border-radius:50%;
+            display:flex;align-items:center;justify-content:center;
+            font-size:22px;border:none;cursor:pointer;
+            box-shadow:0 4px 20px rgba(0,0,0,0.2);
+            transition:transform 0.2s,box-shadow 0.2s;
+        }
+        .float-btn:hover{transform:scale(1.12);box-shadow:0 8px 28px rgba(0,0,0,0.25)}
+        .fb-wa{background:#25d366;color:#fff}
+        .fb-call{background:var(--ink);color:#fff}
+
+        /* ─ RESPONSIVE ─ */
+        @media(max-width:900px){
+            .nav-links{display:none}
+            .ham{display:flex}
+            .nav-links.open{
+                display:flex;flex-direction:column;
+                position:absolute;top:66px;left:0;right:0;
+                background:var(--cream);border-bottom:1px solid var(--border);
+                padding:12px;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,0.08);
+            }
+            .trust-strip-inner{grid-template-columns:repeat(2,1fr)}
+            .trust-item:nth-child(2){border-right:none}
+            .trust-item:nth-child(3){border-top:1px solid var(--border)}
+            .about-grid{grid-template-columns:1fr}
+            .about-img-wrap{height:280px}
+            .contact-grid{grid-template-columns:1fr}
+            .rating-hero{flex-direction:column;gap:32px;padding:32px}
+            .offer-wrap{flex-direction:column;align-items:flex-start;padding:32px 28px}
+            .wrap{padding:0 24px}
+            .hero-inner{padding:40px 24px 36px}
+            .cta-final{padding:72px 24px}
+            .gallery-grid.n3,.gallery-grid.n4{grid-template-columns:1fr;height:auto}
+            .gallery-grid.n3 .gcell,.gallery-grid.n4 .gcell{height:220px}
+            .gallery-grid.n3 .gcell-main,.gallery-grid.n4 .gcell-main{grid-row:auto}
+        }
+
+        /* ─ CAROUSEL ─ */
+        .carousel-wrap{
+            position:relative;
+            border-radius:var(--r-lg);
+            overflow:hidden;
+            box-shadow:var(--sh-xl);
+            background:var(--ink);
+            user-select:none;
+        }
+        .carousel-track{
+            display:flex;
+            transition:transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
+            will-change:transform;
+        }
+        .carousel-slide{
+            min-width:100%;
+            height:480px;
+            position:relative;
+            flex-shrink:0;
+        }
+        .carousel-slide img{
+            width:100%;height:100%;
+            object-fit:cover;
+            display:block;
+        }
+        .carousel-slide-overlay{
+            position:absolute;inset:0;
+            background:linear-gradient(180deg,transparent 55%,rgba(11,12,16,0.75) 100%);
+        }
+        .carousel-caption{
+            position:absolute;bottom:0;left:0;right:0;
+            padding:32px 36px;color:#fff;
+        }
+        .carousel-caption-num{
+            font-size:11px;font-weight:700;letter-spacing:0.1em;
+            text-transform:uppercase;color:rgba(255,255,255,0.5);
+            margin-bottom:6px;
+        }
+        .carousel-caption-title{
+            font-family:'Playfair Display',serif;
+            font-size:22px;font-weight:800;color:#fff;
+        }
+        .carousel-btn{
+            position:absolute;top:50%;transform:translateY(-50%);
+            width:50px;height:50px;border-radius:50%;
+            background:rgba(255,255,255,0.12);
+            border:1.5px solid rgba(255,255,255,0.2);
+            color:#fff;font-size:18px;cursor:pointer;
+            display:flex;align-items:center;justify-content:center;
+            backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+            transition:all 0.2s;z-index:10;
+        }
+        .carousel-btn:hover{
+            background:rgba(255,255,255,0.22);
+            border-color:rgba(255,255,255,0.4);
+            transform:translateY(-50%) scale(1.08);
+        }
+        .carousel-prev{left:20px}
+        .carousel-next{right:20px}
+        .carousel-dots{
+            position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
+            display:flex;gap:8px;z-index:10;
+        }
+        .cdot{
+            width:8px;height:8px;border-radius:50%;
+            background:rgba(255,255,255,0.3);
+            border:none;cursor:pointer;
+            transition:all 0.25s;padding:0;
+        }
+        .cdot.active{
+            background:var(--gold-light);
+            width:24px;border-radius:4px;
+        }
+        .carousel-counter{
+            position:absolute;top:20px;right:20px;
+            background:rgba(11,12,16,0.55);
+            border:1px solid rgba(255,255,255,0.12);
+            backdrop-filter:blur(8px);
+            color:rgba(255,255,255,0.8);
+            font-size:13px;font-weight:600;
+            padding:6px 14px;border-radius:100px;
+            z-index:10;letter-spacing:0.04em;
+        }
+        .carousel-thumb-strip{
+            display:flex;gap:8px;margin-top:10px;
+        }
+        .carousel-thumb{
+            flex:1;height:72px;border-radius:8px;overflow:hidden;cursor:pointer;
+            border:2px solid transparent;transition:all 0.2s;opacity:0.55;
+        }
+        .carousel-thumb.active{border-color:var(--gold-light);opacity:1}
+        .carousel-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+        @media(max-width:900px){
+            .carousel-slide{height:300px}
+            .carousel-thumb-strip{display:none}
+            .carousel-caption-title{font-size:16px}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+    <div class="nav-brand">The Bakery, Manali</div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="services.html" >Services</a></li>
+        <li><a href="about.html" >About</a></li>
+        <li><a href="reviews.html" >Reviews</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-end">
+        <a href="tel:" class="nav-call btn btn-ink" id="navCall">&#128222; Call</a>
+        <button class="ham" id="ham" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <img src="images/img0.jpg" class="hero-bg-img" alt="The Bakery, Manali">
+    <div class="hero-gradient"></div>
+    <div class="hero-inner">
+        <div class="hero-pill">
+            <span class="hero-pill-dot"></span>
+            Manali's Trusted Bakery and Cake Shop
+        </div>
+        <h1 class="hero-name">The Bakery, Manali</h1>
+        <p class="hero-tagline">
+            Professional Bakery and Cake Shop services in Aleo, Manali — quality you can count on.
+        </p>
+        <div class="hero-meta">
+            <span class="hero-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span class="hero-meta-text">4.1 rating</span>
+            <span class="hero-divider"></span>
+            <span class="hero-meta-text">274+ customers</span>
+        </div>
+        <div class="hero-btns">
+            <a href="tel:" class="btn btn-gold btn-lg">&#128222;&ensp;Call Now</a>
+            <a href="https://wa.me/70182699590?text=Hi%20I%20need%20Bakery and Cake Shop%20service%20in%20Manali" class="btn btn-wa btn-lg">&#128172;&ensp;WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+    <div class="trust-strip-inner">
+        <div class="trust-item">
+            <div class="trust-val"><sup>&#9733;</sup>4.1</div>
+            <div class="trust-lbl">Google Rating</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-val">274<sup>+</sup></div>
+            <div class="trust-lbl">Happy Customers</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-val">24<sup>/7</sup></div>
+            <div class="trust-lbl">Availability</div>
+        </div>
+        <div class="trust-item">
+            <div class="trust-val">100<sup>%</sup></div>
+            <div class="trust-lbl">Satisfaction</div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT SLOT -->
+
+<section class="section">
+<div class="wrap">
+    <div class="eyebrow">Get In Touch</div>
+    <h2 class="sec-title">Contact The Bakery, Manali</h2>
+    <p class="sec-sub">Reach out for a quote, booking, or any question — we respond fast.</p>
+    <div class="contact-grid">
+        <div class="contact-cards">
+            <div class="contact-card">
+                <div class="contact-ico">&#128222;</div>
+                <div style="flex:1">
+                    <div class="contact-lbl">Phone</div>
+                    <div class="contact-val"></div>
+                    <div class="contact-sub">Available 24 hours, 7 days a week</div>
+                    <div class="contact-btns">
+                        <a href="tel:" class="btn btn-ink">&#128222;&ensp;Call Now</a>
+                        <a href="https://wa.me/70182699590?text=Hi%20I%20need%20Bakery and Cake Shop%20service%20in%20Manali" class="btn btn-wa">&#128172;&ensp;WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-ico">&#128205;</div>
+                <div>
+                    <div class="contact-lbl">Address</div>
+                    <div class="contact-val">Snow Country, Kullu - Naggar - Manali Rd, Near Hotel, Aleo, Manali, Himachal Pradesh 175131</div>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-ico">&#128336;</div>
+                <div>
+                    <div class="contact-lbl">Business Hours</div>
+                    <div class="contact-val">Open 24 hours</div>
+                    <div class="contact-sub">Monday through Sunday</div>
+                </div>
+            </div>
+            <div class="contact-card">
+                <div class="contact-ico">&#127759;</div>
+                <div>
+                    <div class="contact-lbl">Service Area</div>
+                    <div class="contact-val">Manali, Himachal Pradesh</div>
+                    <div class="contact-sub">Covering Aleo and nearby areas</div>
+                </div>
+            </div>
+        </div>
+        <div class="map-box">
+            <iframe src="https://maps.google.com/maps?q=Snow%20Country%2C%20Kullu%20-%20Naggar%20-%20Manali%20Rd%2C%20Near%20Hotel%2C%20Aleo%2C%20Manali%2C%20Himachal%20Pradesh%20175131&output=embed" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+</div>
+</section>
+
+
+<!-- GLOBAL CTA -->
+<section class="cta-final">
+    <h2 class="cta-title">Ready to get started?</h2>
+    <p class="cta-sub">Call or WhatsApp us — we respond fast, every time.</p>
+    <div class="cta-btns">
+        <a href="tel:" class="btn btn-gold btn-lg">&#128222;&ensp;Call Now</a>
+        <a href="https://wa.me/70182699590?text=Hi%20I%20need%20Bakery and Cake Shop%20service%20in%20Manali" class="btn btn-wa btn-lg">&#128172;&ensp;WhatsApp Us</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="footer-brand">The Bakery, Manali</div>
+    <div class="footer-addr">Snow Country, Kullu - Naggar - Manali Rd, Near Hotel, Aleo, Manali, Himachal Pradesh 175131</div>
+    <div class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-copy">© The Bakery, Manali · Manali</div>
+</footer>
+
+<div class="float-wrap">
+    <a href="https://wa.me/70182699590?text=Hi%20I%20need%20Bakery and Cake Shop%20service%20in%20Manali" class="float-btn fb-wa" title="WhatsApp">&#128172;</a>
+    <a href="tel:" class="float-btn fb-call" title="Call">&#128222;</a>
+</div>
+
+<script>
+(function(){
+    var ham=document.getElementById('ham');
+    var nav=document.getElementById('navLinks');
+    var call=document.getElementById('navCall');
+    call.style.display='none';
+    ham.addEventListener('click',function(){nav.classList.toggle('open')});
+    window.addEventListener('scroll',function(){
+        call.style.display=window.scrollY>120?'inline-flex':'none';
+    });
+})();
+</script>
+
+<script>
+(function(){
+    var carousels = {};
+    function init(id){
+        var wrap = document.getElementById(id);
+        if(!wrap) return;
+        var track = wrap.querySelector('.carousel-track');
+        var slides = track.querySelectorAll('.carousel-slide');
+        var dots = wrap.querySelectorAll('.cdot');
+        var counter = wrap.querySelector('.carousel-counter');
+        var thumbs = wrap.querySelectorAll('.carousel-thumb');
+        var n = slides.length;
+        carousels[id] = {idx:0, n:n, track:track, dots:dots, counter:counter, thumbs:thumbs, timer:null};
+        update(id);
+        startAuto(id);
+        track.addEventListener('touchstart', function(e){ carousels[id]._tx = e.touches[0].clientX; }, {passive:true});
+        track.addEventListener('touchend', function(e){
+            var dx = e.changedTouches[0].clientX - carousels[id]._tx;
+            if(Math.abs(dx) > 40){ dx < 0 ? carouselNext(id) : carouselPrev(id); }
+        }, {passive:true});
+    }
+    function update(id){
+        var c = carousels[id];
+        c.track.style.transform = 'translateX(-' + (c.idx * 100) + '%)';
+        c.dots.forEach(function(d,i){ d.classList.toggle('active', i===c.idx); });
+        if(c.counter) c.counter.textContent = (c.idx+1) + ' / ' + c.n;
+        if(c.thumbs.length) c.thumbs.forEach(function(t,i){ t.classList.toggle('active', i===c.idx); });
+    }
+    function startAuto(id){
+        var c = carousels[id];
+        if(c.timer) clearInterval(c.timer);
+        if(c.n > 1) c.timer = setInterval(function(){ carouselNext(id); }, 4000);
+    }
+    window.carouselNext = function(id){
+        var c = carousels[id];
+        c.idx = (c.idx+1) % c.n;
+        update(id); startAuto(id);
+    };
+    window.carouselPrev = function(id){
+        var c = carousels[id];
+        c.idx = (c.idx - 1 + c.n) % c.n;
+        update(id); startAuto(id);
+    };
+    window.carouselGo = function(id, i){
+        var c = carousels[id];
+        c.idx = i; update(id); startAuto(id);
+    };
+    window.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('[id$="Carousel"]').forEach(function(el){ init(el.id); });
+    });
+})();
+</script>
+
+</body>
+</html>
